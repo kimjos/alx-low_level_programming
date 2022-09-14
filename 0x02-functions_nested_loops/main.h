@@ -40,5 +40,14 @@ int _islower(int c);
  */
 
 int _isalpha(int c);
+/**
+ * print_sign - print the sign
+ *
+ * @c: sign of a character
+ *
+ * Return: +, -, or 0
+ *
+ */
+int print_sign(int n);
 #endif
 
