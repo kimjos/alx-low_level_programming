@@ -49,5 +49,10 @@ int _isalpha(int c);
  *
  */
 int print_sign(int n);
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int _abs(int);
 #endif
-
