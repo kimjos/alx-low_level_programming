@@ -61,4 +61,9 @@ int _abs(int);
  * Return: Always 0.
  */
 int print_last_digit(int);
+/**
+ * jack_bauer - main thing
+ *
+ */
+void jack_bauer(void);
 #endif
