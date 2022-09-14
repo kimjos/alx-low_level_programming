@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	int counter = 1;
+	int counter = 2;
 
 	float a = 1;
 	float b = a + 1;
@@ -21,7 +21,7 @@ int main(void)
 		a = b;
 		b = c;
 		c = a + b;
-		if (counter <= 98)
+		if (counter < 98)
 		{
 			printf(", ");
 		}
