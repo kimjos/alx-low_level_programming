@@ -1,112 +1,49 @@
 #include "dog.h"
+#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * _strlen - returns the length of a string
- * @s: string
- *
- * Return: length of string
- */
-int _strlen(char *s)
-{
-	int length = 0;
-
-	while (*s++)
-		length++;
-	return (length);
-}
-
-/**
- * _strcpy - copies the string from src to dest
- * @dest: array where copy is stored
- * @src: string to be copied
- *
- * Return: the pointer to dest
- */
-char *_strcpy(char *dest, char *src)
-{
-	int len = _strlen(src);
-
-	while (*src)
-		*dest++ = *src++;
-	*dest = '\0';
-	return (dest - len);
-}
-
-/**
- * init_dog - initialize a dog structure
- * @d: dog pointer
+ * new_dog - creates new dog
  * @name: name of dog
  * @age: age of dog
- * @owner: name of owner
- *
- * Return: void
- */
-void init_dog(struct dog *d, char *name, float age, char *owner)
-{
-	if (d == NULL)
-		return;
-
-	d->name = name;
-	d->age = age;
-	d->owner = owner;
-}
-
-/**
- * new_dog - make and initialize a new dog
- * @name: name of dog
- * @age: age of dog
- * @owner: name of owner
- *
- * Return: pointer to dog
+ * @owner: owner of dog
+ * Return: a dog object
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	int len_n;
-	int len_o;
-	dog_t *d;
-	char *namec;
-	char *ownerc;
+	int i, len1, len2;
+	dog_t *ndog;
+	char *a, *b;
 
-
-	d = malloc(sizeof(dog_t));
-	if (d == NULL)
+	len1 = 0;
+	for (i = 0; name[i] != '\0'; i++)
+		len1++;
+	len2 = 0;
+	for (i = 0; owner[i] != '\0'; i++)
+		len2++;
+	ndog = malloc(sizeof(dog_t));
+	if (ndog == NULL)
 		return (NULL);
-
-	if (name != NULL)
+	a = malloc((len1 + 1) * sizeof(char));
+	if (a == NULL)
 	{
-		len_n = _strlen(name);
-
-		namec = malloc(len_n + 1);
-		if (namec == NULL)
-		{
-			free(d);
-			return (NULL);
-		}
-
-		namec = _strcpy(namec, name);
+		free(ndog);
+		return (NULL);
 	}
-	else
-		namec = NULL;
-
-	if (owner != NULL)
+	for (i = 0; i < len1; i++)
+		a[i] = name[i];
+	a[i] = '\0';
+	ndog->name = a;
+	ndog->age = age;
+	b = malloc((len2 + 1) * sizeof(char));
+	if (b == NULL)
 	{
-		len_o = _strlen(owner);
-
-		ownerc = malloc(len_o + 1);
-		if (ownerc == NULL)
-		{
-			free(d);
-			free(namec);
-			return (NULL);
-		}
-
-		ownerc = _strcpy(ownerc, owner);
+		free(a);
+		free(ndog);
+		return (NULL);
 	}
-	else
-		ownerc = NULL;
-
-
-	init_dog(d, namec, age, ownerc);
-	return (d);
+	for (i = 0; i < len2; i++)
+		b[i] = owner[i];
+	b[i] = '\0';
+	ndog->owner = b;
+	return (ndog);
 }
