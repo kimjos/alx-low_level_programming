@@ -1,3 +1,3 @@
 #!/bin/bash
-LD_PRELOAD=./hack.so ./gm 1 2 3 4 5 6 7
-
+wget -P /tmp/ https://raw.github.com/Pericles001/alx-low_level_programming/master/0x18-dynamic_libraries/nrandom.so
+export LD_PRELOAD =/tmp/nrandom.so
